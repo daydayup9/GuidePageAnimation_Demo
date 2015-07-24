@@ -1,25 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="I9Y-9M-bqo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Intro View Controller-->
+        <scene sceneID="4Rm-1S-jha">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I9Y-9M-bqo" customClass="IntroViewController" customModule="GuidePageAnimation_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="G7k-U0-5L9"/>
+                        <viewControllerLayoutGuide type="bottom" id="iPG-Tc-TXY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="fV0-iB-3Yb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNH-MK-CsM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.73725490199999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZLU-Zd-GIS">
+                                <rect key="frame" x="140" y="455" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEF-Jz-7qk">
+                                <rect key="frame" x="20" y="508" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Cr9-EG-ac5"/>
+                                    <constraint firstAttribute="height" constant="40" id="JKt-D8-TTQ"/>
+                                </constraints>
+                                <state key="normal" title="Button1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogL-Ie-weF">
+                                <rect key="frame" x="180" y="508" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="68f-oo-GDZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="bry-I7-nWf"/>
+                                </constraints>
+                                <state key="normal" title="Button2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iPG-Tc-TXY" firstAttribute="top" secondItem="ogL-Ie-weF" secondAttribute="bottom" constant="20" id="0eY-fZ-vuf"/>
+                            <constraint firstAttribute="centerX" secondItem="ZLU-Zd-GIS" secondAttribute="centerX" constant="0.5" id="0nT-bq-JHc"/>
+                            <constraint firstAttribute="centerY" secondItem="ZLU-Zd-GIS" secondAttribute="centerY" multiplier="0.6" id="9tt-Gp-8KQ"/>
+                            <constraint firstItem="ZLU-Zd-GIS" firstAttribute="top" secondItem="gEF-Jz-7qk" secondAttribute="bottom" constant="20" id="Ib3-cN-JBr"/>
+                            <constraint firstItem="JNH-MK-CsM" firstAttribute="leading" secondItem="fV0-iB-3Yb" secondAttribute="leading" id="Osq-2G-tYa"/>
+                            <constraint firstItem="JNH-MK-CsM" firstAttribute="top" secondItem="fV0-iB-3Yb" secondAttribute="top" id="Tpo-73-MdW"/>
+                            <constraint firstAttribute="trailing" secondItem="ogL-Ie-weF" secondAttribute="trailing" constant="20" id="fYb-lN-kVy"/>
+                            <constraint firstItem="iPG-Tc-TXY" firstAttribute="top" secondItem="gEF-Jz-7qk" secondAttribute="bottom" constant="20" id="hTB-De-b1F"/>
+                            <constraint firstItem="gEF-Jz-7qk" firstAttribute="leading" secondItem="fV0-iB-3Yb" secondAttribute="leading" constant="20" id="jxW-wL-ftt"/>
+                            <constraint firstItem="iPG-Tc-TXY" firstAttribute="top" secondItem="JNH-MK-CsM" secondAttribute="bottom" id="llY-NP-nbS"/>
+                            <constraint firstAttribute="trailing" secondItem="JNH-MK-CsM" secondAttribute="trailing" id="oMD-mz-qEj"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ib3-cN-JBr"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="pageControl" destination="ZLU-Zd-GIS" id="5kx-oj-eef"/>
+                        <outlet property="scrollView" destination="JNH-MK-CsM" id="DXb-Vc-0DX"/>
+                        <outlet property="signInButton" destination="ogL-Ie-weF" id="oEJ-0n-JwL"/>
+                        <outlet property="signUpButton" destination="gEF-Jz-7qk" id="bTf-9Y-Ew6"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mz3-Hj-0HK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2267" y="-835"/>
         </scene>
     </scenes>
 </document>

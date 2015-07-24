@@ -1,14 +1,16 @@
 //
 //  IntroViewController.swift
-//  LessChat-iOS
-//
-//  Created by Frank Lin on 12/24/14.
-//  Copyright (c) 2014 Frank Lin. All rights reserved.
 //
 
 import UIKit
 
-class IntroViewController: LCKViewController, UIScrollViewDelegate {
+class IntroViewController: UIViewController, UIScrollViewDelegate {
+  
+  //MARK: - Commons
+  
+  let LCK_DEFAULT_CORNER_RADIUS: Float = 5
+  
+  //MARK: - IBOutlet
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
@@ -16,6 +18,7 @@ class IntroViewController: LCKViewController, UIScrollViewDelegate {
   @IBOutlet weak var signInButton: UIButton!
   @IBOutlet weak var signUpButton: UIButton!
   
+  //MARK: - Property
   
   var guideImageViews: [UIImageView] = []
   var guideTitleViews: [UIImageView] = []
@@ -25,11 +28,11 @@ class IntroViewController: LCKViewController, UIScrollViewDelegate {
   let pageTotal: Int = 4
   var isRotating: Bool = false
   
+  //MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    self.canFeedback = false
-    
+
     // setup button
     signInButton.layer.borderColor = UIColor.whiteColor().CGColor
     signInButton.layer.borderWidth = 1
@@ -120,7 +123,7 @@ class IntroViewController: LCKViewController, UIScrollViewDelegate {
       pageControl.currentPage = page
     }
   }
-
+  
   
   func _addConstraintsTo(#guideImageView: UIImageView, centerXConstant: CGFloat) {
     scrollView.addConstraint(NSLayoutConstraint(item: guideImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: centerXConstant))

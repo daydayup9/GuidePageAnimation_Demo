@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5B63AE2D-45E9-4D11-93DC-410D05C268F1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GuidePageAnimation_Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AD5135E8D79362E97A64F3F0F46601D9B8D5171B</key>
+		<string>https://github.com/daydayup9/GuidePageAnimation_Demo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GuidePageAnimation_Demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AD5135E8D79362E97A64F3F0F46601D9B8D5171B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/daydayup9/GuidePageAnimation_Demo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AD5135E8D79362E97A64F3F0F46601D9B8D5171B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AD5135E8D79362E97A64F3F0F46601D9B8D5171B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GuidePageAnimation_Demo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
