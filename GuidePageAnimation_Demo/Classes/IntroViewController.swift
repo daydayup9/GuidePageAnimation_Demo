@@ -121,6 +121,8 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
       let x: CGFloat = scrollView.contentOffset.x
       let page: Int = Int((x + scrollViewWidth * 0.5) / scrollViewWidth)
       pageControl.currentPage = page
+      
+      animationDragged(scrollView)
     }
   }
   
@@ -134,4 +136,22 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     scrollView.addConstraint(NSLayoutConstraint(item: guideTitleView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: centerXConstant))
     scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[guideImageView]-20-[guideTitleView]", options: NSLayoutFormatOptions(0), metrics: nil, views: ["guideImageView": guideImageView, "guideTitleView": guideTitleView]))
   }
+  
+  func animationDragged(scrollView: UIScrollView) {
+    if scrollView.contentOffset.x < screenWidth / 4 {
+      var position: CGPoint = scrollView.contentOffset
+      var angle: CGFloat = position.x / (self.view.frame.size.width / 2) * CGFloat(M_PI_2)
+      
+      var alphaOne: CGFloat = 1 - position.x / (self.view.frame.size.width / 6)
+      var alphaTwo: CGFloat = -position.x / (self.view.frame.size.width / 8)
+      
+      guideImageViews[0].alpha = position.x > 0 ? alphaOne : (1 - alphaTwo)
+      guideImageViews[0].transform = CGAffineTransformMakeTranslation(-scrollView.contentOffset.x * 2, 0)
+      
+      var affineOne: CGAffineTransform = CGAffineTransformMakeTranslation(-scrollView.contentOffset.x * 2, 0)
+      var affineTwo: CGAffineTransform = CGAffineTransformMakeRotation(angle)
+      guideTitleViews[0].transform = CGAffineTransformConcat(affineOne, affineTwo)
+    }
+  }
+
 }
