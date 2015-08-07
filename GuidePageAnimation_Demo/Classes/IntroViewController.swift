@@ -24,6 +24,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
   var guideTitleViews: [UIImageView] = []
   
   var screenWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
+  var screenHeight: CGFloat = UIScreen.mainScreen().bounds.size.height
   
   let pageTotal: Int = 4
   var isRotating: Bool = false
@@ -79,6 +80,18 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     }
   }
   
+  override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+    return UIInterfaceOrientation.Portrait
+  }
+  
+  override func shouldAutorotate() -> Bool {
+    return false
+  }
+  
+  override func supportedInterfaceOrientations() -> Int {
+    return UIInterfaceOrientation.Portrait.rawValue
+  }
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -115,6 +128,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     }
   }
   
+  
   func scrollViewDidScroll(scrollView: UIScrollView) {
     if !isRotating {
       let scrollViewWidth: CGFloat = scrollView.frame.size.width
@@ -125,7 +139,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
       animationDragged(scrollView)
     }
   }
-  
   
   func _addConstraintsTo(#guideImageView: UIImageView, centerXConstant: CGFloat) {
     scrollView.addConstraint(NSLayoutConstraint(item: guideImageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: centerXConstant))
@@ -138,19 +151,44 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
   }
   
   func animationDragged(scrollView: UIScrollView) {
-    if scrollView.contentOffset.x < screenWidth / 4 {
-      var position: CGPoint = scrollView.contentOffset
-      var angle: CGFloat = position.x / (self.view.frame.size.width / 2) * CGFloat(M_PI_2)
+    var positionPage: CGFloat = scrollView.contentOffset.x
+    if positionPage < screenWidth * 0.25 {
       
-      var alphaOne: CGFloat = 1 - position.x / (self.view.frame.size.width / 6)
-      var alphaTwo: CGFloat = -position.x / (self.view.frame.size.width / 8)
+      var angle: CGFloat = positionPage / (self.view.frame.size.width) * CGFloat(M_PI_4)
       
-      guideImageViews[0].alpha = position.x > 0 ? alphaOne : (1 - alphaTwo)
-      guideImageViews[0].transform = CGAffineTransformMakeTranslation(-scrollView.contentOffset.x * 2, 0)
+      var alphaOne: CGFloat = 1 - positionPage / (self.view.frame.size.width / 2)
+      var alphaTwo: CGFloat = -positionPage / (self.view.frame.size.width / 8)
       
-      var affineOne: CGAffineTransform = CGAffineTransformMakeTranslation(-scrollView.contentOffset.x * 2, 0)
-      var affineTwo: CGAffineTransform = CGAffineTransformMakeRotation(angle)
+      guideImageViews[0].alpha = positionPage > 0 ? alphaOne : (1 - alphaTwo)
+      guideImageViews[0].transform = CGAffineTransformMakeTranslation(-positionPage, 0)
+      
+      var affineOne: CGAffineTransform = CGAffineTransformMakeTranslation(-positionPage, 0)
+      var affineTwo: CGAffineTransform = CGAffineTransformMakeRotation(-angle)
       guideTitleViews[0].transform = CGAffineTransformConcat(affineOne, affineTwo)
+      
+    } else if(positionPage < screenWidth && positionPage < screenWidth * 1.75){
+      
+      let offset = screenWidth / 6
+      
+      var alpha: CGFloat = positionPage / (self.view.frame.size.width)
+      guideImageViews[1].alpha = alpha
+      guideTitleViews[1].transform = CGAffineTransformMakeTranslation(-positionPage / 6 + offset, -positionPage / 6 + offset)
+      
+    }else if (positionPage < screenWidth * 2 && positionPage < screenWidth * 2.75) {
+      
+      let offset: CGFloat = screenWidth * 2 / 6
+      
+      var alpha: CGFloat = positionPage / (self.view.frame.size.width * 2)
+      guideImageViews[2].alpha = alpha
+      guideImageViews[2].transform = CGAffineTransformMakeTranslation(0, positionPage / 6 - offset)
+      guideTitleViews[2].transform = CGAffineTransformMakeTranslation(-positionPage / 6 + offset, -positionPage / 6 + offset)
+      
+    } else if (positionPage < screenWidth * 3 && positionPage < screenWidth * 3.5) {
+      
+      let offset: CGFloat = screenWidth * 3 / 8
+      
+      guideImageViews[3].transform = CGAffineTransformMakeTranslation(0, positionPage / 8 - offset)
+      guideTitleViews[3].transform = CGAffineTransformMakeTranslation(0, positionPage / 8 - offset)
     }
   }
 
